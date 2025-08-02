@@ -1,16 +1,99 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <title>Internship Form</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    #form {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 30px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .form-check-label {
+      color: #000;
+    }
+
+    .form-check-input:invalid ~ .form-check-label {
+      color: red;
+    }
+
+    .form-check-input:invalid ~ .invalid-feedback {
+      display: block;
+    }
+  </style>
 </head>
 
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+  <div class="container" id="form">
+    <h3 class="text-center">Internship Form</h3><br>
+    <form novalidate>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="first-name-input">First Name</label>
+          <input type="text" class="form-control" id="first-name-input" required>
+          <div class="invalid-feedback">First name required!</div>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="last-name-input">Last Name</label>
+          <input type="text" class="form-control" id="last-name-input" required>
+          <div class="invalid-feedback">Last name required!</div>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="email-input">Email Address</label>
+          <input type="email" class="form-control" id="email-input" placeholder="xyz@abc.com" required>
+          <div class="invalid-feedback">Email required!</div>
+        </div>
+      </div>
 
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="college-input">College</label>
+          <input type="text" class="form-control" id="college-input" required>
+          <div class="invalid-feedback">Please provide a valid college.</div>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="grad-year-select">Graduation Year</label>
+          <select class="form-control" id="grad-year-select" required>
+            <option value="">Choose...</option>
+            <option>2020</option>
+            <option>2021</option>
+            <option>2022</option>
+            <option>2023</option>
+          </select>
+          <div class="invalid-feedback">Please select a valid Graduation Year.</div>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="roll-no-input">Roll No.</label>
+          <input type="number" class="form-control" id="roll-no-input" required>
+          <div class="invalid-feedback">Please provide a valid Roll no.</div>
+        </div>
+      </div>
+
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="conditions-checkbox" required>
+        <label class="form-check-label" for="conditions-checkbox">Agree to terms and conditions</label>
+        <div class="invalid-feedback">You must agree before submitting.</div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit form</button>
+    </form>
+  </div>
+
+  <script>
+    // Bootstrap validation trigger
+    const form = document.querySelector("form");
+    form.addEventListener("submit", function (e) {
+      if (!form.checkValidity()) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      form.classList.add("was-validated");
+    });
+  </script>
 </body>
-
 </html>
